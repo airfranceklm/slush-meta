@@ -18,7 +18,7 @@ All commands should be issued through this CLI command.
     ```
     npm install -g slush gulp jspm
     ```
-    
+
 5. Install slush-meta
 
     ```
@@ -82,13 +82,15 @@ Slush meta comes with a set of command that you can use to generate your project
         * *Classic* : This will create a standard ES6 class with a constructor, and will register the service with angular with the module.service method.<br>
         ```
             module.service("myService", MyService);
-        ```<br>
+        ```
+
         The MessageService is a good example of a classic service. You can find it in the generated project in src/app/widgets/messageManager/message.service.js
         * *Factory* : This will create an ES6 class with a static factory method. This factory method will be responsible of instancing the service and returning the instance.<br>
         The service will be registered with angular as a factory like this : <br>
         ```
             module.factory("myService", MyService.factory);
-        ```<br>
+        ```
+
         For more information on Services vs factories in angularJS see this [link](http://blog.thoughtram.io/angular/2015/07/07/service-vs-factory-once-and-for-all.html).
         * *Resource* : This will create an ES6 class called \<Name\>ResourceService, with a static factory method. This method, instead of returning an instance of the service, will return a $resource instance (see [ngResource](https://docs.angularjs.org/api/ngResource)).<br>
         The resources will be created with the following url : "api/rest/resources/\<name\>s/:id". Note the "s" at the end of the name. For now it's just appended in future version, we may use the proper pluralized name of the service.<br>
@@ -96,7 +98,7 @@ Slush meta comes with a set of command that you can use to generate your project
         The service will be registered with angular as a factory like this : <br>
         ```
             module.factory("myResourceService", MyResourceService.factory);
-        ```<br>
+        ```
 
     > Note that the registered name of a service is in camel case whereas the class name of the service is capitalized.        
 
@@ -140,7 +142,7 @@ Slush meta comes with a set of command that you can use to generate your project
     The directive will be registered with angular like this.<br>
     ```
         module.directive("myExample", MyExampleDirective.factory);
-    ```<br>
+    ```
 
     > Note that in the HTML code the directive must be referred as my-example.
 
