@@ -17,7 +17,8 @@ All commands should be issued through this CLI command.
 3. Install slush, gulp and jspm globally.<br>
     ```
     npm install -g slush gulp jspm
-    ```<br>
+    ```
+    
 5. Install slush-meta
 
     ```
