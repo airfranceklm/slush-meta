@@ -1,0 +1,55 @@
+/** Override because missing from bootStrap 3.x */
+input:focus:required:invalid,
+textarea:focus:required:invalid,
+select:focus:required:invalid {
+    color: #b94a48;
+    border-color: #ee5f5b;
+}
+
+span.default-logo{
+  display:block;
+  width:300px;
+  height:52px;
+  background-image:url(/img/logo.png);background-repeat:no-repeat
+}
+
+input:focus:required:invalid:focus,
+textarea:focus:required:invalid:focus,
+select:focus:required:invalid:focus {
+    border-color: #e9322d;
+    -webkit-box-shadow: 0 0 6px #f8b9b7;
+    -moz-box-shadow: 0 0 6px #f8b9b7;
+    box-shadow: 0 0 6px #f8b9b7;
+}
+
+
+.my-header > div.row:first-child  > div{ height: 30px; }
+.my-header > div.row:nth-child(2)  > div:first-child{height: 70px; }
+.my-header > div.row:nth-child(2)  > div:nth-child(2){padding-top: 10px; }
+.my-header > div.row:last-child  > div:first-child{height: 40px; }
+.my-header > div.row:last-child  > div:nth-child(2){line-height: 30px; }
+.my-header a{text-decoration: none;}
+
+.fontsize-x0-8 {font-size:0.8em;}
+.fontsize-x2 {font-size:2em;}
+.fontsize-x3 {font-size:3em;}
+.fontsize-x4 {font-size:4em;}
+.fontsize-x5 {font-size:5em;}
+.fontsize-x6 {font-size:6em;}
+.fontsize-x7 {font-size:7em;}
+.fontsize-x8 {font-size:8em;}
+.fontsize-x9 {font-size:9em;}
+.fontsize-x10 {font-size:10em;}
+
+.pointer{
+    cursor: pointer;
+}
+
+.listRow{
+    cursor: pointer;
+    border-bottom:1px solid #ddd;
+}
+.listRow:hover,.listRow:hover a{
+    background-color: #d9edf7;
+    text-decoration:none;
+}

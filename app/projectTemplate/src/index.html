@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+		<title><%= appName %></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+		<!-- build:css styles/lib.css -->
+    	<!-- endbuild -->
+
+		<!-- build:css styles/app.css -->
+	    <!-- inject:css -->
+		<link rel="stylesheet" href=".tmp/css/app.css">
+		<!-- endinject -->
+		<!-- endbuild -->
+
+	</head>
+	<body>
+		<div class="container-fluid my-header" id="">
+			<div class="row">
+				<div class="col-lg-5 col-sm-12 col-lg-offset-7 text-right">
+					<span class="glyphicon  glyphicon-envelope color-red"></span><a href="#" translate>CORE_CONTACT_US</a>
+					<span class="glyphicon glyphicon-user"></span><a href="#" translate>CORE_LOGIN</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-8">
+					<span class="default-logo"></span>
+				</div>
+				<div class="col-sm-4">
+					<form class="form-inline pull-right" >
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="{{'CORE_SEARCH_PLACEHOLDER' | translate}}" data-ng-model="search" id="pull_4">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+							</span>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-10">
+					<span class="fontsize-x2 text-primary"><%= appName %></span>
+				</div>
+				<div class="col-xs-2 text-right">
+					<switch-language></switch-language>
+				</div>
+			</div>
+		</div>
+
+		<!-- master nav   -->
+		<nav class="navbar navbar-default ng-scope" role="navigation" data-ng-init="navCollapsed = true">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" ng-click="core.navCollapsed = !core.navCollapsed" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="#/home" class="navbar-brand" data-ng-href="#/home"><%= appName %></a>
+				</div>
+				<div style="height: 0px;" collapse="core.navCollapsed" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li id="USERS" data-ng-class="{active: $state.includes('users')}">
+							<a data-ui-sref="users" translate>USER_MENU</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+        <div data-ui-view></div>
+		<message-manager></message-manager>
+
+		<!-- build:js js/app.js -->
+		<!-- inject:js -->
+		<script src="jspm_packages/system.js"></script>
+		<script src="jspm.conf.js"></script>
+		<script>
+			System.import('app/boot').then(function(app){
+				console.log("loaded");
+			});
+		</script>
+		<!-- endinject -->
+		<!-- endbuild -->
+
+
+
+
+	</body>
+</html>

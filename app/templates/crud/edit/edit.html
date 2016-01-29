@@ -1,0 +1,45 @@
+<div class="container-fluid" >
+	<br>
+	<div class="row">
+		<div class="col-lg-1 " >
+		</div><!-- col-lg-1   -->
+		<div class="col-lg-10">
+			<form class="form-horizontal" style="text-align:left;" name="<%= resourceName %>Form" data-ng-model="<%= resourceName %>.data" role="form">
+				<legend><span translate>{{<%= resourceName %>.title}}</span> {{<%= resourceName %>.data.<%= idProp %>}}</legend>
+				<% _.each(properties, function(item){ %>
+				<div class="form-group col-lg-6" >
+					<label class="control-label col-sm-2" for="<%= resourceName %>_<%= item %>" translate><%= resourceName.toUpperCase() %>_EDIT_<%= item.toUpperCase() %></label>
+					<div class="col-sm-10">
+						<input required id="<%= resourceName %>_<%= item %>" type="text" class="input form-control" placeholder="{{ '<%= resourceName.toUpperCase() %>_EDIT_<%= item.toUpperCase() %>' | translate}}" data-ng-model="<%= resourceName %>.data.<%= item %>">
+					</div>
+				</div>
+				<%})%>
+
+
+
+        <!-- Embed props -->
+		<% if (embedProperties.length >= 0) {
+			_.each(embedProperties, function(item) {%>
+				<legend><h4 translate><%= resourceName.toUpperCase() %>_EDIT_<%= item.name.toUpperCase() %></h4></legend>
+				<%_.each(item.properties, function(it) {%>
+				<div class="form-group col-lg-6" >
+					<label class="control-label col-sm-2" for="<%= resourceName %>_<%= item.name %>_<%= it %>" translate><%= resourceName.toUpperCase() %>_EDIT_<%= item.name.toUpperCase() %>_<%= it.toUpperCase() %></label>
+					<div class="col-sm-10">
+						<input required id="<%= resourceName %>_<%= item.name %>_<%= it %>" type="text" class="input form-control" placeholder="{{ '<%= resourceName.toUpperCase() %>_EDIT_<%= item.name.toUpperCase() %>_<%= it.toUpperCase() %>' | translate}}" data-ng-model="<%= resourceName %>.data.<%= item.name %>.<%= it %>">
+					</div>
+				</div>
+				<%})
+			})
+		}%>
+
+				<hr>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<button type="submit" class="btn btn-small" data-ng-click="<%= resourceName %>.save(<%= resourceName %>Form)" translate><%= resourceName.toUpperCase() %>_EDIT_SAVE</button>
+						<button type="button" class="btn btn-small" ui-sref="^" translate><%= resourceName.toUpperCase() %>_EDIT_CANCEL</button>
+					</div>
+				</div>
+			</form>
+		</div><!-- col-lg-10   -->
+	</div>
+</div> <!-- container -->

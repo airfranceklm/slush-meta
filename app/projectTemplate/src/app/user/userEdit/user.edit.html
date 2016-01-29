@@ -1,0 +1,46 @@
+<div class="container-fluid" >
+	<br>
+	<div class="row">
+		<div class="col-lg-1 " >
+		</div><!-- col-lg-1   -->
+		<div class="col-lg-10">
+			<form class="form-horizontal" style="text-align:left;" name="userForm" data-ng-model="user.data" role="form">
+				<legend><span translate>{{user.title}}</span> {{user.data.tech_id}}</legend>
+				<div class="form-group col-lg-2" ng-repeat="link in user.data.links | pictureFilter:'picture'" >
+                        <img ng-src="{{link.href}}" class="col-xs-12">
+				</div>
+				<div ng-class="user.data.links===undefined?'col-lg-12':'col-lg-10'" >
+					<div class="form-group col-lg-6" >
+						<label class="control-label col-sm-2" for="user_firstName" translate>USER_EDIT_FIRSTNAME</label>
+						<div class="col-sm-10">
+							<input required id="user_firstName" type="text" class="input form-control" placeholder="{{ 'USER_EDIT_FIRSTNAME' | translate}}" data-ng-model="user.data.firstName">
+						</div>
+					</div>
+
+					<div class="form-group col-lg-6" >
+						<label class="control-label col-sm-2" for="user_lastName" translate>USER_EDIT_LASTNAME</label>
+						<div class="col-sm-10">
+							<input required id="user_lastName" type="text" class="input form-control" placeholder="{{ 'USER_EDIT_LASTNAME' | translate}}" data-ng-model="user.data.lastName">
+						</div>
+					</div>
+
+					<div class="form-group col-lg-6" >
+						<label class="control-label col-sm-2" for="user_mail" translate>USER_EDIT_MAIL</label>
+						<div class="col-sm-10">
+							<input required id="user_mail" type="text" class="input form-control" placeholder="{{ 'USER_EDIT_MAIL' | translate}}" data-ng-model="user.data.mail">
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<button type="button" class="btn btn-small" data-ng-click="user.editPicture()" ng-repeat="link in user.data.links | pictureFilter:'picture'" translate>USER_EDIT_PICTURE_BUTTON</button>
+						<button type="submit" class="btn btn-small" data-ng-click="user.save(userForm)" translate>USER_EDIT_SAVE_BUTTON</button>
+						<button type="button" class="btn btn-small" ui-sref="^" translate>USER_EDIT_CANCEL_BUTTON</button>
+					</div>
+				</div>
+
+			</form>
+		</div><!-- col-lg-10   -->
+	</div>
+</div> <!-- container -->

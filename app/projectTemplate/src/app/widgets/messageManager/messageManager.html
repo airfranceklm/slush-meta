@@ -1,0 +1,7 @@
+<div class="messageManager">
+    <alert ng-repeat="message in messageManager.messageService.messageQueue" class="alertElement" type="{{message.type}}" close="messageManager.messageService.hide(message.id)">
+        <strong translate translate-values="{{message.params}}">{{message.title}}</strong>
+        <span translate translate-values="{{message.params}}">{{message.text}}</span>
+    </alert>
+</div>
+<spinner></spinner>

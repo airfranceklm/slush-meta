@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <br>
+    <div class="row" data-ui-view>
+        <div class="col-lg-1 " >
+            <br>
+            <ul class="nav nav-pills nav-stacked">
+                <li>
+                    <a data-ui-sref="users.edit" >
+                        <span class="heydings_icons">+</span>
+                        <span translate>USER_NEW</span>
+                    </a>
+                </li>
+            </ul>
+        </div><!-- col-lg-1   -->
+
+        <div class="col-lg-11 " >
+            <legend translate>USER_LIST</legend>
+            <br>
+            <div class="col-lg-11 listRow" ng-repeat="user in users.list|filter:search"
+            ng-click = "users.goToItem(user.tech_id)" >
+                <br>
+
+                <div >
+                    <div class="pull-left" style="padding:5px" ng-repeat="link in user.links | pictureFilter:'picture'">
+                        <img ng-src="{{link.href}}" width="32px" height="32px">
+                    </div>
+                    <div>
+                        <div ><strong>{{user.tech_id}} - {{user.firstName}} {{user.lastName}}</strong>
+                          <a href="" title="Remove user" ng-click="$event.stopPropagation();users.delete(user.tech_id,$index)" class=" pull-right">
+                          <span class="glyphicon glyphicon-remove" ></span></a>
+                        </div>
+                        <div  >
+                            <div class="col-lg-3"><span class="text-info small"><span translate>USER_EDIT_MAIL</span>&nbsp;&nbsp;</span>{{user.mail}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-11 btn-primary text-center pointer" ng-click="users.getNext()" translate>USER_MORE</div>
+            <div class="col-lg-11">&nbsp;</div>
+        </div><!-- col-lg-11   -->
+    </div>
+</div> <!-- container   -->

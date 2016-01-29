@@ -1,0 +1,30 @@
+
+//Message manager system CSS.
+@alertWidth: 300px;
+.alertElement{
+    width: @alertWidth;
+}
+.messageManager{
+    position: fixed;
+    bottom:0px;
+    right:0;
+    position: fixed;
+    width: @alertWidth;
+}
+
+.alertElement.ng-enter {
+    margin-left: @alertWidth;
+    transition: all 0.5s ease;
+}
+
+.alertElement.ng-enter.ng-enter-active {
+    margin-left: 0px;
+}
+
+.alertElement.ng-leave {
+    transition:0.5s ease all;
+    margin-left: 0px;
+}
+.alertElement.ng-leave.ng-leave-active {
+    margin-left: @alertWidth;
+}

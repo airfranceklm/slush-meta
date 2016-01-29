@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <br>
+    <div class="row" data-ui-view>
+        <div class="col-lg-1 " >
+            <br>
+            <ul class="nav nav-pills nav-stacked">
+                <li>
+                    <a data-ui-sref="<%= controllerName %>.edit" >
+                        <span class="heydings_icons">+</span>
+                        <span translate><%= resourceName.toUpperCase() %>_NEW</span>
+                    </a>
+                </li>
+            </ul>
+        </div><!-- col-lg-1   -->
+
+        <div class="col-lg-11 " >
+            <legend translate><%= resourceName.toUpperCase() %>_LIST</legend>
+            <br>
+            <div class="col-lg-11 listRow" ng-repeat="<%= resourceName %> in <%= controllerName %>.list|filter:search"
+            ng-click = "<%= controllerName %>.goToItem(<%= resourceName %>.<%= idProp %>)" >
+                <br>
+                <div class="col-lg-12">
+                  <div ><strong>{{<%= resourceName %>.<%= idProp %>}} - {{<%= resourceName %>.<%= listProperties[0] %>}} {{<%= resourceName %>.<%= listProperties[1] %>}}</strong>
+                  <a href="" title="Remove <%= resourceName %>" ng-click="$event.stopPropagation();<%= controllerName %>.delete(<%= resourceName %>.<%= idProp %>,$index)" class=" pull-right">
+                    <span class="icon-af icon-af-A-basic-remove11" ></span></a>
+                  </div>
+                    <div class="col-lg-12" >
+                    <% _.each(listProperties.slice(2,listProperties.length), function(item){ %>
+                      <div class="col-lg-3"><span class="text-info small"><span translate><%= resourceName.toUpperCase() %>_EDIT_<%= item.toUpperCase() %></span>&nbsp;&nbsp;</span>{{<%= resourceName %>.<%= item %>}}</div>
+                    <%})%>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-11 btn-primary text-center pointer" ng-click="<%= controllerName %>.getNext()" translate><%= resourceName.toUpperCase() %>_MORE</div>
+            <div class="col-lg-11">&nbsp;</div>
+        </div><!-- col-lg-11   -->
+    </div>
+</div> <!-- container   -->

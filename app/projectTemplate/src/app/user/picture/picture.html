@@ -1,0 +1,36 @@
+<div class="container-fluid" data-ng-cloak>
+	<br><br>
+	<div class="row">
+		<div class="col-lg-1 " >
+		</div><!-- col-lg-1   -->
+
+		<div class="col-lg-11">
+			<form class="form-horizontal" style="text-align:left;" name="myForm"role="form">
+				<legend translate>USER_EDIT_PICTURE</legend>
+				<div class="form-group">
+					<input name="picture_name" id="picture_name" type="file" placeholder="File name" data-ng-model="UserPicture.user.picture"  onchange="angular.element(this).scope().picture.setFiles(this)">
+					<label for="picture_name" translate>USER_EDIT_PICTURE_FILENAME</label>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-8">
+						<div data-ng-repeat="file in files.slice(0)" data-ng-show="files.length">
+							<span>{{file.webkitRelativePath || file.name}}</span>
+							(<span data-ng-switch="file.size > 1024*1024">
+								<span data-ng-switch-when="true">{{file.size / 1024 / 1024 | number:2}} MB</span>
+								<span data-ng-switch-default>{{file.size / 1024 | number:2}} kB</span>
+           					</span>)
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<button type="button" class="btn btn-small" data-ng-click="picture.uploadFile()" data-ng-show="files.length" translate>USER_EDIT_UPLOAD_BUTTON</button>
+						<button type="button" class="btn btn-small" data-ng-click="picture.delete()" translate>USER_EDIT_DELETE_BUTTON</button>
+						<button type="button" class="btn btn-small" data-ng-click="picture.gotoUserPage()" translate>USER_EDIT_CANCEL_BUTTON</button>
+					</div>
+				</div>
+			</form>
+		</div><!-- col-lg-11   -->
+	</div><!-- row -->
+</div> <!-- container   -->

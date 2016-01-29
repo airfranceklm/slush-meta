@@ -1,0 +1,32 @@
+{
+<% _.each(properties, function(item){ %>
+  "<%= resourceName.toUpperCase() %>_EDIT_<%= item.toUpperCase() %>": "<%= _.capitalize(item) %>",
+<%})%>
+<% if (embedProperties.length >= 0) {
+_.each(embedProperties, function(item) {%>
+  "<%= resourceName.toUpperCase() %>_EDIT_<%= item.name.toUpperCase() %>": "<%= _.capitalize(item.name) %>",
+  <%_.each(item.properties, function(it) {%>
+  "<%= resourceName.toUpperCase() %>_EDIT_<%= item.name.toUpperCase() %>_<%= it.toUpperCase() %>": "<%= _.capitalize(it) %>",
+  <%})
+})
+}%>
+  "<%= resourceName.toUpperCase() %>_EDIT_SAVE": "Save changes",
+  "<%= resourceName.toUpperCase() %>_EDIT_CANCEL": "Cancel",
+  "<%= resourceName.toUpperCase() %>_EDIT_SAVING": "Saving item...",
+  "<%= resourceName.toUpperCase() %>_EDIT_CREATED": "<%= _.capitalize(resourceName) %> successfully created",
+  "<%= resourceName.toUpperCase() %>_CREATED_MESSAGE": "Created the <%= resourceName %> with id {{id}}.",
+  "<%= resourceName.toUpperCase() %>_EDIT_UPDATED": "<%= _.capitalize(resourceName) %> successfully updated",
+  "<%= resourceName.toUpperCase() %>_UPDATED_MESSAGE": "The <%= resourceName %> with id {{id}} has been successfully updated.",
+  "<%= resourceName.toUpperCase() %>_EDIT_NOT_VALID_FORM": "Form is not valid",
+  "<%= resourceName.toUpperCase() %>_EDIT_NOT_VALID_FORM_MESSAGE": "Check the form inputs, some may be not properly filled.",
+  "<%= resourceName.toUpperCase() %>_EDIT_TITLE": "<%= _.capitalize(resourceName) %> -",
+  "<%= resourceName.toUpperCase() %>_NEW_TITLE": "New <%= _.capitalize(resourceName) %>",
+  "<%= resourceName.toUpperCase() %>_LIST_LOADING": "Loading list...",
+  "<%= resourceName.toUpperCase() %>_LIST_DELETING": "Deleting item...",
+  "<%= resourceName.toUpperCase() %>_LIST_DELETED": "<%= _.capitalize(resourceName) %> successfully deleted",
+  "<%= resourceName.toUpperCase() %>_LIST_DELETED_MESSAGE": "<%= _.capitalize(resourceName) %> with id {{id}}, has been successfully deleted",
+  "<%= resourceName.toUpperCase() %>_NEW": "New",
+  "<%= resourceName.toUpperCase() %>_LIST": "<%= _.capitalize(resourceNamePlural) %> list",
+  "<%= resourceName.toUpperCase() %>_MORE": "more"
+}
+
