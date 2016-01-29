@@ -11,7 +11,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "bin": {
-    "meta2": "src/index.js"
+    "meta": "src/index.js"
   },
   "dependencies": {
     "del": "^2.0.0",
