@@ -219,8 +219,5 @@ Slush meta comes with a set of command that you can use to generate your project
     List or array objects are not supported yet.<br>
 
 ## Changelog :
-* **V 1.0.0-rc.2** :
-    - slush and slush-me are now also installed locally to the generated project.
-    - Introduction of the meta CLI. The meta command just wraps any "slush meta" command and use the local installation when available or the global one otherwise. This allows to keep the same version of slush-me for a given project and still be able to use newer versions for newer projects.
-* **V 1.0.0-rc.1** :
-    - initial implementation, first release candidate
+* **V 1.0.0** :
+    - It's just the beginning.
