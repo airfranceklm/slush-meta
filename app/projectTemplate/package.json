@@ -36,7 +36,7 @@
     "postinstall": "jspm install && jspm install --dev"
   },
   "devDependencies": {
-    "babel-eslint": "3.1.x",
+    "babel-eslint": "4.1.x",
     "browser-sync": "2.9.x",
     "compression": "1.6.x",
     "del": "1.2.x",
@@ -89,7 +89,8 @@
     "phantomjs": "1.9.x",
     "protractor": "2.5.1",
     "slush": "1.1.x",
-    "strip-json-comments": "^2.0.0",
+    "slush-meta": "1.0.x",
+    "strip-json-comments": "2.0.x",
     "systemjs-builder": "0.10.x",
     "yargs": "3.27.x"
   }

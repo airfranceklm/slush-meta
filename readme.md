@@ -219,5 +219,17 @@ Slush meta comes with a set of command that you can use to generate your project
     List or array objects are not supported yet.<br>
 
 ## Changelog :
+* **V 1.0.1** :
+    - bumped babel-eslint dependency to fix an issue.
+    - added code Analyze to the bundle task (so now the packaged application is properly analyzed before being bundled).
+    - fixed some versioning in package.json.
+    
+    - **Migration path from 1.0.1** :<br>
+        - In your package.json 
+            - locate babel-eslint in your dev-dependencies (line 39 in original package.json). Change the version to 4.1.x.```"babel-eslint": "4.1.x",```<br>
+            - install slush-meta locally. ```npm install slush-meta@1.0.x --save-dev<br>
+            - locate strip-json-comments in your de-dependencies (line 93 in original package.json). Change the version to 2.0.x.```"strip-json-comments": "2.0.x",```<br>        
+        - In your gulpfile.js locate the "bundle" task (line 108 in original file) and add the "analyze" task as a prerequisite.```gulp.task("bundle", [ "analyze", "clean", "templatecache"], function (done) {```<br>
+        - In your project folder do :```npm install```<br>
 * **V 1.0.0** :
     - It's just the beginning.

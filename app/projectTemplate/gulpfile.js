@@ -105,7 +105,7 @@
      * bundles the application into one file and transplile it to ES5
      * This is an internal task, do not use it directly
      */
-    gulp.task("bundle", [ "clean", "templatecache"], function (done) {
+    gulp.task("bundle", [ "analyze", "clean", "templatecache"], function (done) {
 
         gulp.src([config.appModule])
             .pipe(gulp.dest(config.temp));
