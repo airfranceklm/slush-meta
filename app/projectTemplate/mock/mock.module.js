@@ -14,10 +14,10 @@ let module = angular
         "ngMockE2E"
     ]);
 
-module.constant("mockPicturePathPattern", /users\/\d+\/picture/)
-module.constant("picturePlaceholder", "img/annonymous.jpg")
-module.constant("restUrl", "api/rest/resources")
-module.service("backendLocatorService", BackendLocatorService)
-module.directive("img", ImageMock.factory)
+module.constant("mockPicturePathPattern", /users\/\d+\/picture/);
+module.constant("picturePlaceholder", "img/annonymous.jpg");
+module.constant("restUrl", "api/rest/resources");
+module.service("backendLocatorService", BackendLocatorService);
+module.directive("img", ImageMock.factory);
 module.run(AppMock.initMock);
 module.run(UsersMock.initMock);

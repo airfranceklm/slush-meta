@@ -105,7 +105,7 @@
      * bundles the application into one file and transplile it to ES5
      * This is an internal task, do not use it directly
      */
-    gulp.task("bundle", [ "analyze", "clean", "templatecache"], function (done) {
+    gulp.task("bundle", [ "analyse", "clean", "templatecache"], function (done) {
 
         gulp.src([config.appModule])
             .pipe(gulp.dest(config.temp));
@@ -223,7 +223,15 @@
             .src(config.langFiles)
             .pipe(data(function( file ){
                 var lang = path.basename(file.path,".json");
-                var content = JSON.parse(stripComments(String(file._contents)));
+
+                var content;
+                try{
+                    content = JSON.parse(stripComments(String(file._contents)));
+                } catch (e){
+                    log("An error occured parsing json file: " + file.path, $.util.colors.red);
+                    log("Please check for formatting errors", $.util.colors.red);
+                    throw e;
+                }
 
                 var messages = langs[lang];
                 if(messages === undefined){
@@ -246,9 +254,7 @@
                 }
                 txt = txt.substring(0, txt.length - 2);
                 txt += "];"
-                log(txt);
                 gulp.src(config.translateInitFile)
-                    .pipe($.debug())
                     .pipe($.replace(/\/\* LANGUAGES_PARAMS \*\/\n[^\n]*\n[\t ]*\/\* LANGUAGES_PARAMS-END \*\//,
                         "/* LANGUAGES_PARAMS */\n        " + txt + "\n        /* LANGUAGES_PARAMS-END */"))
                     .pipe(gulp.dest(config.translateInitDir))
@@ -288,7 +294,7 @@
         var assets = $.useref.assets({searchPath: "./"});
         var cssFilter = $.filter("**/*.css");
         var jsAppFilter = $.filter("**/" + config.optimized.app);
-        log(config.temp + "app.css");
+
 
         var doUglify = !args.pretty;
 
@@ -297,13 +303,10 @@
             .pipe($.inject(gulp.src([config.temp + "app.css"])))
             .pipe($.inject(gulp.src([bundle, templates])))
             .pipe(assets)
-            .pipe($.debug({title: "assets:"}))
-            .pipe($.debug({title: "css:"}))
             .pipe(cssFilter)
             .pipe($.csso())
             .pipe(cssFilter.restore())
             .pipe(jsAppFilter)
-            .pipe($.debug({title: "js app:"}))
             .pipe($.ngAnnotate())
             .pipe($.if(doUglify, $.uglify()))
             .pipe(jsAppFilter.restore())
@@ -435,8 +438,7 @@
     function serve(env) {
 
         var isDev = env != "build";
-        log(config);
-        log(config.port);
+
         var nodeOptions = {
             script: "./webServer/app.js",
             delayTime: 1,
@@ -501,7 +503,7 @@
             },
             injectsChanges: true,
             logFileChanges: true,
-            logLevel: "debug",
+            logLevel: "warn",
             logPrefix: "gulp-patterns",
             notify: true,
             reloadDelay: 0
@@ -512,16 +514,18 @@
     /**
      * Utility function to log a message into the console.
      */
-    function log(msg) {
+    function log(msg, color) {
+        if(!color){
+            color = $.util.colors.green;
+        }
         if (typeof (msg) === "object") {
             for (var item in msg) {
                 if (msg.hasOwnProperty(item)) {
-                    $.util.log($.util.colors.green(msg[item]));
+                    $.util.log(color(msg[item]));
                 }
             }
         } else {
-            $.util.log($.util.colors.green(msg));
+            $.util.log(color(msg));
         }
     }
-
 })();

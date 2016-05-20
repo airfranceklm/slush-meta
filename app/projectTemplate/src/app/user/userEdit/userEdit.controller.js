@@ -31,22 +31,22 @@ export default class UserEditController {
     save(form){
         if(form.$valid) {
             this.message.showSpinner("USER_EDIT_SAVING");
-            if(this.data.tech_id === undefined){
+            if(this.data.techId === undefined){
                 this.userResourceService.save(this.data,
                     (data, headers) => {
-                    this.message.success("USER_EDIT_CREATED", "USER_CREATED_MESSAGE", {"id": data.tech_id});
+                    this.message.success("USER_EDIT_CREATED", "USER_CREATED_MESSAGE", {"id": data.techId});
                     this.message.hideSpinner();
-                    this.$state.go("^.edit", {"id": data.tech_id});
+                    this.$state.go("^.edit", {"id": data.techId});
                 },
                 (error) => {
                     this.message.hideSpinner();
                     this.handleError(error);
                 });
             } else {
-                this.userResourceService.update({"id": this.data.tech_id}, this.data,
+                this.userResourceService.update({"id": this.data.techId}, this.data,
                 (data) => {
                     this.message.hideSpinner();
-                    this.message.success("USER_EDIT_UPDATED", "USER_UPDATED_MESSAGE", {"id": data.tech_id});
+                    this.message.success("USER_EDIT_UPDATED", "USER_UPDATED_MESSAGE", {"id": data.techId});
                 },
                 (error) => {
                     this.message.hideSpinner();
@@ -77,7 +77,7 @@ export default class UserEditController {
      * Updates the title of the page depending on if we update or create a resource.
      */
     updateTitle(){
-        if(this.data.tech_id !== undefined){
+        if(this.data.techId !== undefined){
             this.title = "USER_EDIT_TITLE";
         } else {
             this.title = "USER_NEW_TITLE";

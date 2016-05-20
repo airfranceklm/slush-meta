@@ -1,10 +1,10 @@
-import angular from "angular";
-import angularUiRouter from "angular-ui-router";
 import picture from "./picture/picture.module";
+import userEdit from "./userEdit/userEdit.module";
+import UserRoute from "./user.route";
+import angularUiRouter from "angular-ui-router";
 import UserController from "./user.controller";
 import UserResourceService from "./user.resource.service";
-import UserRoute from "./user.route";
-import userEdit from "./userEdit/userEdit.module";
+import angular from "angular";
 
 /*eslint no-unused-vars: 0*/
 /**

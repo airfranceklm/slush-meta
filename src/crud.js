@@ -15,9 +15,10 @@ var mock = require("./mock");
 module.exports = function(dirName) {
     return function (done) {
 
-        var mockFunction = mock(dirName, false);
 
-        mockFunction(function(answers) {
+        var mockFunction = mock(dirName);
+
+        mockFunction(function(error, answers) {
 
             var destPath = "src/app/" + answers.resourceName;
             var module = './src/app/app.module.js';

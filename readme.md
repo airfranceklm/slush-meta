@@ -219,6 +219,13 @@ Slush meta comes with a set of command that you can use to generate your project
     List or array objects are not supported yet.<br>
 
 ## Changelog :
+* **V 1.0.2** :
+    - Upgraded to Angular 1.5.5
+    - tech_id in user example has been renamed to techId.
+    - Better error handling in the i18n file generation process that reports error in a human readable way
+    - All tasks are slightly less verbose.
+    - Various bug fixes.
+    
 * **V 1.0.1** :
     - bumped babel-eslint dependency to fix an issue.
     - added code Analyze to the bundle task (so now the packaged application is properly analyzed before being bundled).

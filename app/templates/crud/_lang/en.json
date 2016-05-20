@@ -26,6 +26,7 @@ _.each(embedProperties, function(item) {%>
   "<%= resourceName.toUpperCase() %>_LIST_DELETED": "<%= _.capitalize(resourceName) %> successfully deleted",
   "<%= resourceName.toUpperCase() %>_LIST_DELETED_MESSAGE": "<%= _.capitalize(resourceName) %> with id {{id}}, has been successfully deleted",
   "<%= resourceName.toUpperCase() %>_NEW": "New",
+  "<%= resourceName.toUpperCase() %>_BACK": "Back",
   "<%= resourceName.toUpperCase() %>_LIST": "<%= _.capitalize(resourceNamePlural) %> list",
   "<%= resourceName.toUpperCase() %>_MORE": "more"
 }

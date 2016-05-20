@@ -2,9 +2,18 @@
 	<br>
 	<div class="row">
 		<div class="col-lg-1 " >
+			<br>
+			<ul class="nav nav-pills nav-stacked">
+				<li>
+					<a ui-sref="^" ui-sref-opts="{reload: true}">
+						<span><</span>
+						<span translate><%= resourceName.toUpperCase() %>_BACK</span>
+					</a>
+				</li>
+			</ul>
 		</div><!-- col-lg-1   -->
 		<div class="col-lg-10">
-			<form class="form-horizontal" style="text-align:left;" name="<%= resourceName %>Form" data-ng-model="<%= resourceName %>.data" role="form">
+			<form class="form-horizontal" style="text-align:left;" name="<%= resourceName %>Form" ng-model="<%= resourceName %>.data" role="form">
 				<legend><span translate>{{<%= resourceName %>.title}}</span> {{<%= resourceName %>.data.<%= idProp %>}}</legend>
 				<% _.each(properties, function(item){ %>
 				<div class="form-group col-lg-6" >
@@ -35,8 +44,8 @@
 				<hr>
 				<div class="form-group">
 					<div class="col-sm-12">
-						<button type="submit" class="btn btn-small" data-ng-click="<%= resourceName %>.save(<%= resourceName %>Form)" translate><%= resourceName.toUpperCase() %>_EDIT_SAVE</button>
-						<button type="button" class="btn btn-small" ui-sref="^" translate><%= resourceName.toUpperCase() %>_EDIT_CANCEL</button>
+						<button type="submit" class="btn btn-small" ng-click="<%= resourceName %>.save(<%= resourceName %>Form)" translate><%= resourceName.toUpperCase() %>_EDIT_SAVE</button>
+						<button type="button" class="btn btn-small" ui-sref="^" ui-sref-opts="{reload: true}" translate><%= resourceName.toUpperCase() %>_EDIT_CANCEL</button>
 					</div>
 				</div>
 			</form>

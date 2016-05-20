@@ -1,11 +1,11 @@
 {
   "name": "<%= appName %>",
   "version": "0.0.1",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://stash.eden.klm.com/scm/<%= appName %>/<%= appName %>.git"
+    "url": "https://github.com/<%= appName %>/<%= appName %>.git"
   },
   "jspm": {
     "directories": {
@@ -13,11 +13,11 @@
     },
     "configFile": "jspm.conf.js",
     "dependencies": {
-      "angular": "npm:angular@1.4.7",
-      "angular-animate": "npm:angular-animate@1.4.7",
+      "angular": "npm:angular@1.5.5",
+      "angular-animate": "npm:angular-animate@1.5.5",
       "angular-ui-bootstrap": "npm:angular-ui-bootstrap@0.13.3",
-      "angular-mocks": "npm:angular-mocks@1.4.7",
-      "angular-resource": "npm:angular-resource@1.4.7",
+      "angular-mocks": "npm:angular-mocks@1.5.5",
+      "angular-resource": "npm:angular-resource@1.5.5",
       "angular-translate": "npm:angular-translate@2.8.1",
       "angular-translate-loader-static-files": "npm:angular-translate-loader-static-files@2.8.1",
       "angular-ui-router": "npm:angular-ui-router@0.2.15",
@@ -38,7 +38,6 @@
   "devDependencies": {
     "babel-eslint": "4.1.x",
     "browser-sync": "2.9.x",
-    "compression": "1.6.x",
     "del": "1.2.x",
     "eslint": "0.20.x",
     "express": "4.13.x",
@@ -52,7 +51,6 @@
     "gulp-cordova-plugin": "1.3.x",
     "gulp-csso": "1.0.x",
     "gulp-data": "1.2.x",
-    "gulp-debug": "2.1.x",
     "gulp-eslint": "0.11.x",
     "gulp-file": "0.2.x",
     "gulp-filter": "2.0.x",
@@ -84,8 +82,8 @@
     "karma-jasmine": "0.3.x",
     "karma-jspm": "1.1.x",
     "karma-phantomjs-launcher": "0.2.x",
-    "karma-verbose-reporter": "0.0.x",
     "karma-spec-reporter": "0.0.x",
+    "karma-verbose-reporter": "0.0.x",
     "phantomjs": "1.9.x",
     "protractor": "2.5.1",
     "slush": "1.1.x",

@@ -15,10 +15,7 @@ export default class <%= _.capitalize(resourceName) %>Controller {
         this.list = [];
         this.page = 0;
         this.pageSize = 10;
-
-        this.initEvents($rootScope);
         this.getNext();
-
     }
 
     /**
@@ -59,33 +56,4 @@ export default class <%= _.capitalize(resourceName) %>Controller {
             this.message.reportError(error);
         });
     }
-
-    /**
-     * Reloads the entire list from first page to current page.
-     * Useful when the list has been modified on the server by another controller.
-     */
-    reload() {
-        this.message.showSpinner("<%= resourceName.toUpperCase() %>_LIST_LOADING");
-        this.<%= resourceName %>ResourceService.query({"page": 0, "size": this.pageSize * this.page}, (data) => {
-            this.list = data;
-            this.message.hideSpinner();
-        },
-        (error) => {
-            this.message.hideSpinner();
-            this.message.reportError(error);
-        });
-    }
-
-    /**
-     * Initialize event handling when navigating to this state
-     */
-    initEvents($rootScope) {
-        $rootScope.$on("$stateChangeStart", (event, toState, toParams, fromState, fromParams) => {
-            // reloads the list when coming back to this state.
-            if(toState.name === "<%= resourceNamePlural %>"){
-                this.reload();
-            }
-        });
-    }
-
 }

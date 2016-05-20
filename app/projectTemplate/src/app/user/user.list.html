@@ -17,7 +17,7 @@
             <legend translate>USER_LIST</legend>
             <br>
             <div class="col-lg-11 listRow" ng-repeat="user in users.list|filter:search"
-            ng-click = "users.goToItem(user.tech_id)" >
+            ng-click = "users.goToItem(user.techId)" >
                 <br>
 
                 <div >
@@ -25,8 +25,8 @@
                         <img ng-src="{{link.href}}" width="32px" height="32px">
                     </div>
                     <div>
-                        <div ><strong>{{user.tech_id}} - {{user.firstName}} {{user.lastName}}</strong>
-                          <a href="" title="Remove user" ng-click="$event.stopPropagation();users.delete(user.tech_id,$index)" class=" pull-right">
+                        <div ><strong>{{user.techId}} - {{user.firstName}} {{user.lastName}}</strong>
+                          <a href="" title="Remove user" ng-click="$event.stopPropagation();users.delete(user.techId,$index)" class=" pull-right">
                           <span class="glyphicon glyphicon-remove" ></span></a>
                         </div>
                         <div  >

@@ -6,6 +6,7 @@ var $ = require('gulp-load-plugins')({lazy: true});
 var _ = require('lodash');
 var util = require('./utils');
 var fs = require('fs');
+var args = require('yargs').argv;
 
 /**
  * Create a gulp task to scaffold a module.
@@ -39,10 +40,80 @@ module.exports = function (dirName){
 
 
         function proceed() {
+            if(args._.length >= 2) {
+                doScaffold(getArgsAnswers(), done);
+            }else{
+                inquirer.prompt(getPromptOptions(), function(answers){
+                    doScaffold(answers, done);
+                });
+            }
+        }
 
+        function doScaffold(answers, done){
+            util.log(answers);
+            if(answers.parentModule === '(not a sub-module)'){
+                answers.parentModule ='';
+            }
+            var rootModule = srcPath + "app.module.js";
+
+            var destPath = srcPath;
+
+            if(answers.parentModule != ""){
+                destPath += answers.parentModule + "/";
+            }
+
+            destPath += _.camelCase(answers.moduleName);
+            var src = [dirName + '/app/templates/module.js'];
+
+            answers.moduleDependencies = formatDepsWithPath(answers.moduleDependencies);
+
+            var creation = true;
+            if(fs.existsSync(destPath +"/" + _.camelCase(answers.moduleName) + ".module.js")){
+                // the module already exists, we don't have to declare it again, just update the file.
+                creation = false;
+            }
+
+            gulp.src(src)
+                .pipe($.rename(function (path) {
+                    path.basename = _.camelCase(answers.moduleName) + "." + path.basename;
+                    util.log(path);
+                }))
+                .pipe($.template(answers, {'interpolate': /<%=([\s\S]+?)%>/g}))
+                .pipe($.conflict(destPath))
+                .pipe(gulp.dest(destPath))
+                .on('finish', function () {
+                    if(!creation){
+                        done();
+                    } else {
+                        //declaring the module in the parent module
+                        var module = rootModule;
+                        var destPath = srcPath;
+                        if (answers.parentModule != "") {
+                            destPath = srcPath + answers.parentModule + "/";
+
+                            module = destPath + util.getModuleName(answers.parentModule) + ".module.js";
+                            util.log("module " + module);
+                        }
+
+                        gulp.src(module)
+                            .pipe($.insert.transform(function (contents) {
+                                return util.formatModules(contents, answers);
+                            }))
+                            .pipe($.insert.prepend('import ' + _.camelCase(answers.moduleName) + ' from "./' + _.camelCase(answers.moduleName) + '/' + _.camelCase(answers.moduleName) + '.module";\n'))
+                            .pipe(gulp.dest(destPath))
+                            .on('finish', function () {
+                                done(); //Finished
+                            });
+                    }
+                });
+        }
+
+        /////////////////////////
+
+
+        function getPromptOptions(){
             var deps = intDeps.concat(outDeps);
-
-            var promptOptions = [
+            return [
                 {
                     type: 'input',
                     name: 'moduleName',
@@ -69,70 +140,16 @@ module.exports = function (dirName){
                 }
 
             ];
-
-            //Task
-            inquirer.prompt(promptOptions, function (answers) {
-                util.log(answers);
-                if(answers.parentModule == '(not a sub-module)'){
-                    answers.parentModule ='';
-                }
-                var rootModule = srcPath + "app.module.js";
-
-                var destPath = srcPath;
-
-                if(answers.parentModule != ""){
-                    destPath += answers.parentModule + "/";
-                }
-
-                destPath += _.camelCase(answers.moduleName);
-                var src = [dirName + '/app/templates/module.js'];
-
-                answers.moduleDependencies = formatDepsWithPath(answers.moduleDependencies);
-
-                var creation = true;
-                if(fs.existsSync(destPath +"/" + _.camelCase(answers.moduleName) + ".module.js")){
-                    // the module already exists, we don't have to declare it again, just update the file.
-                    creation = false;
-                }
-
-                gulp.src(src)
-                    .pipe($.rename(function (path) {
-                        path.basename = _.camelCase(answers.moduleName) + "." + path.basename;
-                        util.log(path);
-                    }))
-                    .pipe($.template(answers, {'interpolate': /<%=([\s\S]+?)%>/g}))
-                    .pipe($.conflict(destPath))
-                    .pipe(gulp.dest(destPath))
-                    .on('finish', function () {
-                        if(!creation){
-                            done();
-                        } else {
-                            //declaring the module in the parent module
-                            var module = rootModule;
-                            var destPath = srcPath;
-                            if (answers.parentModule != "") {
-                                destPath = srcPath + answers.parentModule + "/";
-
-                                module = destPath + util.getModuleName(answers.parentModule) + ".module.js";
-                                util.log("module " + module);
-                            }
-
-                            gulp.src(module)
-                                .pipe($.insert.transform(function (contents) {
-                                    return util.formatModules(contents, answers);
-                                }))
-                                .pipe($.insert.prepend('import ' + _.camelCase(answers.moduleName) + ' from "./' + _.camelCase(answers.moduleName) + '/' + _.camelCase(answers.moduleName) + '.module";\n'))
-                                .pipe(gulp.dest(destPath))
-                                .on('finish', function () {
-                                    done(); //Finished
-                                });
-                        }
-                    });
-            });
         }
 
-        /////////////////////////
-
+        function getArgsAnswers(){
+            return {
+                moduleName: args._[1],
+                moduleDescription: args._[2] === undefined?"":args._[2],
+                moduleDependencies: args._[3] === undefined?[]:args._[3].split(","),
+                parentModule: args._[4] === undefined?0:args._[4]
+            };
+        }
 
         /**
          * format the dependency array

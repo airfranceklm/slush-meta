@@ -41,20 +41,20 @@
 
         try {
             stats = fs.lstatSync(npm.bin + '/' + slush);
-            console.log("Meta: using local installation of slush-meta");
+            console.log("Meta: using local installation of slush-me");
             return npm.bin + '/' + slush;
         }
         catch (e) {
-            console.log("Meta: using global installation of slush-meta");
+            console.log("Meta: using global installation of slush-me");
             return slush;
         }
     }
 
     function getArgs(){
         if (userArgs.length > 0) {
-            return ["meta:" + userArgs[0]];
+            return ["me:" + userArgs[0]];
         } else {
-            return ["meta"];
+            return ["me"];
         }
     }
 

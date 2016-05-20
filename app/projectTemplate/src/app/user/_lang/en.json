@@ -1,5 +1,6 @@
 {
     "USER_NEW": "New",
+    "USER_BACK": "Back",
     "USER_LIST": "Users list",
     "USER_LIST_LOADING": "Loading list...",
     "USER_LIST_DELETING": "Deleting item...",

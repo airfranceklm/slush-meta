@@ -1,6 +1,6 @@
 export default [
   {
-    "tech_id": 0,
+    "techId": 0,
     "links": [
       {
         "rel": "self",
@@ -24,7 +24,7 @@ export default [
     "mail": "Patel.Warren@airfrance.fr"
   },
   {
-    "tech_id": 1,
+    "techId": 1,
     "links": [
       {
         "rel": "self",
@@ -48,7 +48,7 @@ export default [
     "mail": "Hallie.Benton@airfrance.fr"
   },
   {
-    "tech_id": 2,
+    "techId": 2,
     "links": [
       {
         "rel": "self",
@@ -72,7 +72,7 @@ export default [
     "mail": "Tina.Bridges@airfrance.fr"
   },
   {
-    "tech_id": 3,
+    "techId": 3,
     "links": [
       {
         "rel": "self",
@@ -96,7 +96,7 @@ export default [
     "mail": "Oneill.Goodman@airfrance.fr"
   },
   {
-    "tech_id": 4,
+    "techId": 4,
     "links": [
       {
         "rel": "self",
@@ -120,7 +120,7 @@ export default [
     "mail": "Florence.Merritt@airfrance.fr"
   },
   {
-    "tech_id": 5,
+    "techId": 5,
     "links": [
       {
         "rel": "self",
@@ -144,7 +144,7 @@ export default [
     "mail": "Melendez.Underwood@airfrance.fr"
   },
   {
-    "tech_id": 6,
+    "techId": 6,
     "links": [
       {
         "rel": "self",
@@ -168,7 +168,7 @@ export default [
     "mail": "English.Manning@airfrance.fr"
   },
   {
-    "tech_id": 7,
+    "techId": 7,
     "links": [
       {
         "rel": "self",
@@ -192,7 +192,7 @@ export default [
     "mail": "Cooke.Leonard@airfrance.fr"
   },
   {
-    "tech_id": 8,
+    "techId": 8,
     "links": [
       {
         "rel": "self",
@@ -216,7 +216,7 @@ export default [
     "mail": "Marion.Blankenship@airfrance.fr"
   },
   {
-    "tech_id": 9,
+    "techId": 9,
     "links": [
       {
         "rel": "self",
@@ -240,7 +240,7 @@ export default [
     "mail": "Heath.Paul@airfrance.fr"
   },
   {
-    "tech_id": 10,
+    "techId": 10,
     "links": [
       {
         "rel": "self",
@@ -264,7 +264,7 @@ export default [
     "mail": "Kendra.Sears@airfrance.fr"
   },
   {
-    "tech_id": 11,
+    "techId": 11,
     "links": [
       {
         "rel": "self",
@@ -288,7 +288,7 @@ export default [
     "mail": "Araceli.Head@airfrance.fr"
   },
   {
-    "tech_id": 12,
+    "techId": 12,
     "links": [
       {
         "rel": "self",
@@ -312,7 +312,7 @@ export default [
     "mail": "Blanca.Tillman@airfrance.fr"
   },
   {
-    "tech_id": 13,
+    "techId": 13,
     "links": [
       {
         "rel": "self",
@@ -336,7 +336,7 @@ export default [
     "mail": "Kathryn.Wall@airfrance.fr"
   },
   {
-    "tech_id": 14,
+    "techId": 14,
     "links": [
       {
         "rel": "self",
@@ -360,7 +360,7 @@ export default [
     "mail": "Smith.Morin@airfrance.fr"
   },
   {
-    "tech_id": 15,
+    "techId": 15,
     "links": [
       {
         "rel": "self",
@@ -384,7 +384,7 @@ export default [
     "mail": "Miriam.Glenn@airfrance.fr"
   },
   {
-    "tech_id": 16,
+    "techId": 16,
     "links": [
       {
         "rel": "self",
@@ -408,7 +408,7 @@ export default [
     "mail": "Jenny.Dillon@airfrance.fr"
   },
   {
-    "tech_id": 17,
+    "techId": 17,
     "links": [
       {
         "rel": "self",
@@ -432,7 +432,7 @@ export default [
     "mail": "Avila.Matthews@airfrance.fr"
   },
   {
-    "tech_id": 18,
+    "techId": 18,
     "links": [
       {
         "rel": "self",
@@ -456,7 +456,7 @@ export default [
     "mail": "Mitzi.Bruce@airfrance.fr"
   },
   {
-    "tech_id": 19,
+    "techId": 19,
     "links": [
       {
         "rel": "self",

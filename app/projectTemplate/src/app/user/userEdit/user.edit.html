@@ -2,12 +2,21 @@
 	<br>
 	<div class="row">
 		<div class="col-lg-1 " >
+			<br>
+			<ul class="nav nav-pills nav-stacked">
+				<li>
+					<a ui-sref="^" ui-sref-opts="{reload: true}"  >
+						<span class="heydings_icons"><</span>
+						<span translate>USER_BACK</span>
+					</a>
+				</li>
+			</ul>
 		</div><!-- col-lg-1   -->
 		<div class="col-lg-10">
 			<form class="form-horizontal" style="text-align:left;" name="userForm" data-ng-model="user.data" role="form">
-				<legend><span translate>{{user.title}}</span> {{user.data.tech_id}}</legend>
+				<legend><span translate>{{user.title}}</span> {{user.data.techId}}</legend>
 				<div class="form-group col-lg-2" ng-repeat="link in user.data.links | pictureFilter:'picture'" >
-                        <img ng-src="{{link.href}}" class="col-xs-12">
+					<img ng-src="{{link.href}}" class="col-xs-12">
 				</div>
 				<div ng-class="user.data.links===undefined?'col-lg-12':'col-lg-10'" >
 					<div class="form-group col-lg-6" >
@@ -36,7 +45,7 @@
 					<div class="col-sm-12">
 						<button type="button" class="btn btn-small" data-ng-click="user.editPicture()" ng-repeat="link in user.data.links | pictureFilter:'picture'" translate>USER_EDIT_PICTURE_BUTTON</button>
 						<button type="submit" class="btn btn-small" data-ng-click="user.save(userForm)" translate>USER_EDIT_SAVE_BUTTON</button>
-						<button type="button" class="btn btn-small" ui-sref="^" translate>USER_EDIT_CANCEL_BUTTON</button>
+						<button type="button" class="btn btn-small" ui-sref="^" ui-sref-opts="{reload: true}" translate>USER_EDIT_CANCEL_BUTTON</button>
 					</div>
 				</div>
 

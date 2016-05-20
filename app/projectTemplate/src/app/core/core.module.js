@@ -1,11 +1,10 @@
-import angular from "angular";
-import ngAnimate from "angular-animate";
-import angularUiBootstrap from "angular-ui-bootstrap";
-import angularResource from "angular-resource";
-import angularUiRouter from "angular-ui-router";
 import BackendLocatorService from "./backendLocator.service";
-import Route from "./core.route";
 import HomeController from "./home.controller";
+import angular from "angular";
+import angularUiRouter from "angular-ui-router";
+import angularUiBootstrap from "angular-ui-bootstrap";
+import ngAnimate from "angular-animate";
+import Route from "./core.route";
 
 /*eslint no-unused-vars: 0*/
 /**
@@ -18,7 +17,6 @@ let module = angular
     .module(moduleName, [
         angularUiRouter,
         angularUiBootstrap,
-        angularResource,
         ngAnimate
     ]);
 

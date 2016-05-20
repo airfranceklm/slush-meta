@@ -77,10 +77,9 @@ function formatArray(sourceString) {
 }
 
 function formatModules(contents, answers) {
-    var regexp = /(\.module\s*\(\s*[\d\w\$\"\']*,\s*\[\s*)(([\d\w\$]+,?\s*)*)/;
+    var regexp = /(\.module\s*\(\s*[\d\w\$\"\']*,\s*\[\s*)(([\d\w\$\"\']+,?\s*)*)/;
 
     var m = regexp.exec(contents);
-
     var modules = m[2].split(',');
 
     modules.splice(modules.length, 0, '\n        ' + _.camelCase(answers.moduleName));
@@ -114,9 +113,18 @@ function formatRoutes(contents, answers) {
         '                templateUrl: "app/' + answers.moduleName + '/' + answers.viewName + '.html",\n' +
         '                controller: "' + answers.controllerName + '",\n' +
         '                controllerAs: "' + answers.controllerAsName + '"\n' +
-        '            })\n            ';
+        '            })';
 
-    contents = contents.replace(regexp, "$1" + route +"$2");
+    if(contents.match(regexp)){
+        contents = contents.replace(regexp, "$1" + route + "\n            " +"$2");
+    } else {
+        var splitContent = contents.split('"ngInject";');
+        contents = splitContent[0] + '"ngInject";\n';
+
+        contents += "\n        $stateProvider\n            " + route + ";" + splitContent[1];
+
+    }
+
     return contents;
 }
 

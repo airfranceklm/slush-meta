@@ -3,15 +3,10 @@
 
 var express = require('express');
 var app = express();
-var compress = require('compression');
 var port = process.env.PORT || 7230;
 var environment = process.env.NODE_ENV;
 var mock = process.env.MOCK;
 var url = require('url');
-
-
-
-app.use(compress());
 
 
 console.log('About to crank up node');
@@ -52,6 +47,6 @@ app.use(function(req, res, next) {
 app.listen(port, function() {
     console.log('Express server listening on port ' + port);
     console.log('env = ' + app.get('env') +
-    '\n__dirname = ' + __dirname +
-    '\nprocess.cwd = ' + process.cwd());
+        '\n__dirname = ' + __dirname +
+        '\nprocess.cwd = ' + process.cwd());
 });

@@ -7,7 +7,6 @@ import "json.date-extensions";
 
 JSON.useDateParser();
 
-
 describe('CurrentUser', function() {
 	beforeEach(angular.mock.module(moduleApp));
 	beforeEach(angular.mock.module(moduleMock));

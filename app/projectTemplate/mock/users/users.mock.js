@@ -37,7 +37,7 @@ export default class UsersMock {
                 mock.list.push(item);
                 $log.debug("Backend mock : users has been added : ");
                 $log.debug(item);
-                return [200, item, {Location: `${baseUrl}${restUrl}/users/${item.tech_id}`}];
+                return [200, item, {Location: `${baseUrl}${restUrl}/users/${item.techId}`}];
             }
         );
 
@@ -132,7 +132,7 @@ export default class UsersMock {
      * Creates a new item
      */
     newItem(id, obj){
-        obj.tech_id = id;
+        obj.techId = id;
         obj.links = [
             {
                 "rel": "self",
@@ -161,20 +161,20 @@ export default class UsersMock {
     getNewId (list){
         let maxId = 0;
         for (let item of list){
-            if(item.tech_id > maxId){
-                maxId = item.tech_id;
+            if(item.techId > maxId){
+                maxId = item.techId;
             }
         }
         return maxId + 1;
     }
 
     /**
-     * get the index of an item in the list given its tech_id
+     * get the index of an item in the list given its techId
      */
     getIndex (list, id){
         let index = 0;
         for (let i = 0; i < list.length; i++){
-            if(list[i].tech_id == id){
+            if(list[i].techId == id){
                 index = i;
             }
         }
